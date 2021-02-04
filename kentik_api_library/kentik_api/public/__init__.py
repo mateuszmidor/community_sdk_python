@@ -7,6 +7,8 @@ from .tenant import Tenant, TenantUser
 from .custom_dimension import CustomDimension, Populator
 from .custom_application import CustomApplication
 from .plan import Plan, PlanDevice, PlanDeviceType
+from .batch_operation import BatchOperationPart, Upsert, Criterion, Deletion
+from .manual_mitigation import ManualMitigation, Alarm, HistoricalAlert, AlertFilter
 from .query_sql import SQLQuery
 from .query_object import (
     QueryObject,
@@ -20,4 +22,19 @@ from .query_object import (
     DimensionType,
     ChartViewType,
     TimeFormat,
+)
+from .device import (
+    Device,
+    AuthenticationProtocol,
+    PrivacyProtocol,
+    CDNAttribute,
+    DeviceBGPType,
+    DeviceType,
+    DeviceSubtype,
+    SNMPv3Conf,
+    AppliedLabels,
+    Interface,
+    TopNextHopASN,
+    SecondaryIP,
+    VRFAttributes,
 )

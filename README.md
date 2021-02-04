@@ -1,9 +1,5 @@
 # community_sdk_python
 
-## Usage examples
-
-For usage examples please see: kentik_api_library/examples/
-
 ## Release process for kentik-api
 
 Release process for kentik-api library is based on github repo tags. Every tag with format v[0-9].[0-9].[0-9] will trigger automatic build of package and publish it in PyPi repository (at the moment in testing instance).
@@ -20,17 +16,13 @@ Implemented API resources:
 - users
 - sites
 - tags
+- devices (with interfaces)
 - device labels
-- custom dimensions
+- custom dimensions (with populators)
 - custom applications
 - saved filters
 - my kentik portal
 - query methods
-
-Working on:
 - plans
-- devices (need request-response data structures implemented)
-
-To be implemented:
 - alerts
 - alerts active

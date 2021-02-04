@@ -74,7 +74,7 @@ class MypyCmd(distutils.cmd.Command):
 
     def initialize_options(self):
         """Set default values for option packages"""
-        self.packages = ["kentik_api", "tests/component", "examples"]
+        self.packages = ["kentik_api", "tests", "examples"]
 
     def finalize_options(self):
         """Post-process options."""
@@ -105,11 +105,15 @@ setup(
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/kentik/community_sdk_python/tree/main/kentik_api_library",
+    license="GPLv3+",
     include_package_data=True,
-    install_requires=["python-http-client>=3.3.1", "requests>=2.25.0", "typing-extensions>=3.7.4.3"],
+    install_requires=["requests>=2.25.0", "typing-extensions>=3.7.4.3", "dacite>=1.6.0"],
     setup_requires=["pytest-runner", "pylint-runner", "setuptools_scm"],
     tests_require=["pytest", "pylint"],
     packages=PACKAGES,
     package_dir=PACKAGE_DIR,
     cmdclass={"pylint": PylintCmd, "mypy": MypyCmd},
+    classifiers=[
+        "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    ],
 )

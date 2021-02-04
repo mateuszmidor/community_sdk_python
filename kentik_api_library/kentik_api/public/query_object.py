@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from typing import List, Optional, Dict
 from enum import Enum
 
+from kentik_api.public.types import ID
 from kentik_api.public.saved_filter import Filters
 
 
@@ -111,7 +112,7 @@ class TimeFormat(Enum):
 
 @dataclass
 class SavedFilter:
-    filter_id: int
+    filter_id: ID
     is_not: bool = False
 
 
@@ -138,7 +139,7 @@ class Aggregate:
     fn: AggregateFunctionType
     sample_rate: int = 1
     rank: Optional[int] = None  # valid: number 5..99; only used when fn == percentile
-    raw: Optional[bool] = None  # requred for topxchart queries
+    raw: Optional[bool] = None  # required for topxchart queries
 
 
 @dataclass
@@ -193,7 +194,15 @@ class QueryDataResult:
 @dataclass
 class QueryChartResult:
     image_type: ImageType
-    image_data_base64: str
+    image_data: bytes
+
+    def save_image_as(self, file_path: str) -> None:
+        data = self.get_data()
+        with open(file_path, "wb") as file:
+            file.write(data)
+
+    def get_data(self) -> bytes:
+        return self.image_data
 
 
 @dataclass
